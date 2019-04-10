@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
 // @ is an alias to /src
 import { Toast } from 'vant';
 
@@ -30,7 +30,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" rel="stylesheet/scss" scoped>
 .container {
   width: 100%;
   height: auto;

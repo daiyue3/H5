@@ -6,7 +6,8 @@
     <div style="background:#FFF;">
         <img :src="imgSrc" alt="" style="width:100%;">
         <div  v-html="articleContent" class="articleContent"></div>
-        <div class="form">
+        <div class="showForm" @click="clickme" id="clickme">点我减肥</div>
+        <div v-show="showForm" class="form">
           手机号码：<input type="text" placeholder="请输入手机号码" v-model="phonenum" id="phonenum">
           登录密码：<input type="password" placeholder="请输入密码" v-model="psw" id="psw">
           确认密码：<input type="password" placeholder="请再次输入密码" v-model="psw1" id="psw1">
@@ -17,11 +18,10 @@
 
         </div>
     </div>
-    
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import { Toast } from 'vant';
@@ -34,12 +34,13 @@ export default {
       phonenum: '',
         psw: '',
         psw1: '',
-        num: ''
+        num: '',
+      showForm: false
     };
   },
   methods: {
     getArticleDetails (){
-      // var html = "http://47.99.100.88:82/article?id=ba1fab42-f536-45d0-808e-c55ceda6dd3a"	
+//       var html = "http://47.99.100.88:82/article?id=ba1fab42-f536-45d0-808e-c55ceda6dd3a"
       var html = window.location.href
       var Request = new Object();
       if(html.indexOf("?")!=-1){
@@ -107,9 +108,10 @@ export default {
         console.log(res)
         Toast.fail(res.data.message || '注册失败')
       })
+    },
+    clickme(){
+      this.showForm = true
     }
-
-
   },
   mounted() {
     this.getArticleDetails()
@@ -131,7 +133,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scope> 
+<style lang="scss" rel="stylesheet/scss" scoped>
 .container {
   width: 100%;
   height: auto;
@@ -146,6 +148,20 @@ export default {
     padding: 0;
     height: auto;
     background-color: #FFF;
+  }
+  .showForm {
+    font-size: 18px;
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    color: #fff;
+    display: block;
+    line-height: 40px;
+    text-align: center;
+    background-color: #FACA3C;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
   }
   .form{
         padding: 10px;
@@ -172,15 +188,13 @@ export default {
           display:block;
           background-color: #FACA3C;
           width: 80%;
-          margin:0 auto;
+          margin:15px auto 25px;
           height:40px;
-          margin-top: 15px;
-          margin-bottom:25px;
           border-radius: 5px;
           line-height: 40px;
           text-align: center;
           cursor: pointer;
-          color:#333;
+          color:#fff;
       }
 }
 </style>

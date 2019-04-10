@@ -2,7 +2,8 @@
   <div class="container">
     <div style="background-color: #CB3B27;">
         <img src="https://daiyue.site/img/ads.jpg" style="width: 100%;min-height: 400px;">
-        <div id="form" style="color:#333;">
+        <div class="showForm" @click="clickme" id="clickme">点我减肥</div>
+        <div v-show="showForm" id="form" style="color:#fff;">
             手机号码：<input type="text" placeholder="请输入手机号码" v-model="phonenum" id="phonenum">
             登录密码：<input type="password" placeholder="请输入密码" v-model="psw" id="psw">
             确认密码：<input type="password" placeholder="请再次输入密码" v-model="psw1" id="psw1">
@@ -16,7 +17,7 @@
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import { Toast } from 'vant';
@@ -28,7 +29,8 @@ export default {
       phonenum: '',
         psw: '',
         psw1: '',
-        num: ''
+        num: '',
+      showForm: false
     };
   },
   methods: {
@@ -84,6 +86,9 @@ export default {
         console.log(res)
         Toast.fail(res.data.message)
       })
+    },
+    clickme(){
+      this.showForm = true
     }
   },
   mounted() {
@@ -95,7 +100,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" rel="stylesheet/scss" scoped>
 .container {
   width: 100%;
   height: auto;
@@ -103,41 +108,46 @@ export default {
   box-sizing: border-box;
   padding: 0;
   background-color: #CB3B27;
-    #form{
-        padding: 10px;
-        box-sizing: border-box;
-        margin: 0 auto;
-        margin-top: -100px;
-        font-size: 18px;
-        width: 80%;
-        input{
-            width: 100%;
-            height: 40px;
-            border-radius: 5px;
-            border: 1px solid #CB3B27;
-            background-color: #FFF;
-            font-size: 18px;
-            padding: 0 10px;
-            margin: 10px 0;
-            color: #333;
-        }
-        
+  .showForm {
+    font-size: 18px;
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    color: #fff;
+    display: block;
+    line-height: 40px;
+    text-align: center;
+  }
+  #form{
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    font-size: 18px;
+    width: 80%;
+    input{
+      width: 100%;
+      height: 40px;
+      border-radius: 5px;
+      border: 1px solid #CB3B27;
+      background-color: #FFF;
+      font-size: 18px;
+      padding: 0 10px;
+      margin: 10px 0;
+      color: #333;
     }
-    .submit{
-          display:block;
-          background-color: #FACA3C;
-          width: 80%;
-          margin:0 auto;
-          height:40px;
-          margin-top: 15px;
-          margin-bottom:25px;
-          border-radius: 5px;
-          line-height: 40px;
-          text-align: center;
-          cursor: pointer;
-          color:#333;
-      }
-   
-    
+  }
+  .submit{
+    display:block;
+    color: #fff;
+    background-color: #FACA3C;
+    width: 80%;
+    margin:15px auto 25px;
+    height:40px;
+    border-radius: 5px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+  }
 }
 </style>

@@ -67,7 +67,7 @@
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import { Dialog } from 'vant';
@@ -185,7 +185,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" rel="stylesheet/scss" scoped>
 .container {
   width: 100%;
   min-height:100vh;

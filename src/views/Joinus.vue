@@ -2,7 +2,8 @@
   <div class="container">
     <div style="background: #2C317E;">
         <img src="https://daiyue.site/img/joinus.jpeg" style="width: 100%;">
-        <div id="form" style="margin-top:0;">
+        <div class="showForm" @click="clickme" id="clickme">点我入驻</div>
+        <div v-show="showForm" id="form" style="margin-top:0;">
             手机号码：<input type="text" placeholder="请输入手机号码" v-model="phonenum" id="num">
             姓&nbsp;&nbsp;名：<input type="text" placeholder="请输入姓名" v-model="name" id="name">
             <div class="submit" @click="submit">
@@ -13,7 +14,7 @@
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import { Toast } from 'vant';
@@ -23,7 +24,8 @@ export default {
   data() {
     return {
       phonenum: '',
-      name: ''
+      name: '',
+      showForm: false
     };
   },
   methods: {
@@ -50,6 +52,9 @@ export default {
         console.log(res)
         Toast.fail(res.data.message)
       })
+    },
+    clickme(){
+      this.showForm = true
     }
   },
   mounted() {
@@ -61,13 +66,24 @@ export default {
 };
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" rel="stylesheet/scss" scoped>
 .container {
   width: 100%;
   height: auto;
   box-sizing: border-box;
   padding: 0;
   background-color: #FFF;
+  .showForm {
+    font-size: 18px;
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    color: #fff;
+    display: block;
+    line-height: 40px;
+    text-align: center;
+  }
     #form{
         padding: 10px;
         box-sizing: border-box;

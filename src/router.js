@@ -8,6 +8,9 @@ import Ads from './views/Ads.vue'
 import BannerH5 from './views/BannerH5.vue'
 import Activity from './views/Activity.vue'
 import Secret from './views/Secret.vue'
+import About from './views/About.vue'
+import Agreement from './views/Agreement.vue'
+import Download from './views/Download.vue'
 
 Vue.use(Router)
 
@@ -56,6 +59,21 @@ export default new Router({
 		  name: 'secret',
 		  component: Secret
 		},
+    {
+      path: '/about',
+      name: 'about',
+      component: About
+    },
+    {
+      path: '/agreement',
+      name: 'agreement',
+      component: Agreement
+    },
+    {
+      path: '/download',
+      name: 'download',
+      component: Download
+    }
     // {
     //   path: '/about',
     //   name: 'about',

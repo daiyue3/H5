@@ -54,7 +54,7 @@
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import { Dialog } from "vant";
@@ -95,8 +95,8 @@ export default {
       });
     },
     getParam() {
-      // var _html = window.location.href;
-      var _html = 'http://share.laiscn.com/activity?id=a5905843-acb5-43b3-bedc-a227521b77a1&random=201903311320373270'
+       var _html = window.location.href;
+//      var _html = 'http://share.laiscn.com/activity?id=a5905843-acb5-43b3-bedc-a227521b77a1&random=201903311320373270'
       var Request = new Object();
       if (_html.indexOf("?") != -1) {
         var str = _html.split("?")[1]; //去掉?号
@@ -178,7 +178,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" rel="stylesheet/scss" scoped>
 .container {
   width: 100%;
   height: auto;

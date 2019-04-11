@@ -26,18 +26,20 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: left;
   background-color: #FFF;
+	box-sizing: border-box;
+	padding: 0;
+	width: 100%;
 }
 .container{
   background-color: #FFF;
-}
-p{
+	box-sizing: border-box;
+	padding: 0;
 	width: 100%;
-	display: block;
+	img{
+		width: 100%;
+	}
 }
-img{
-	width: 100%;
-}
+
 </style>
 

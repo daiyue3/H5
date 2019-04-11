@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <div class="activityContent" v-html="activityContent"></div>
+    <div class="activityContent" id="activityContent" v-html="activityContent"></div>
 
     <div class="footer">
       <div class="join" style="cursor:pointer;" @click="confirm1">
@@ -95,8 +95,8 @@ export default {
       });
     },
     getParam() {
-		//var _html = window.location.href;
-     var _html = 'http://share.laiscn.com/activity?id=bdecd1ee-aa0e-4499-b877-552b2ef8e26d&random=201904081032101037'
+			var _html = window.location.href;
+			//var _html = 'http://share.laiscn.com/activity?id=bdecd1ee-aa0e-4499-b877-552b2ef8e26d&random=201904081032101037'
       var Request = new Object();
       if (_html.indexOf("?") != -1) {
         var str = _html.split("?")[1]; //去掉?号
@@ -164,7 +164,8 @@ export default {
           },2500);
         }
       }
-    }
+    },
+		
 
     
   },
@@ -174,6 +175,7 @@ export default {
   },
   created() {
     document.title = "活动详情";
+		
   }
 };
 </script>
@@ -225,7 +227,8 @@ export default {
     margin-top: 5px;
     background-color: #fff;
     box-sizing: border-box;
-	text-align: center;
+		text-align: center;
+		
 	p{
 		width: 100vw;
 		box-sizing: border-box;

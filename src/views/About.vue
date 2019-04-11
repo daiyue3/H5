@@ -1,9 +1,9 @@
 <template lang="html">
   <div class="about">
     <p>莱瘦，已有十余年线下成功服务经验，目前已有1000+线下营养俱乐部，10000+营养顾问，持续服务了200000余人次；现已成功开发出莱瘦APP，布局线上，打造莱瘦线上健康生态圈，并结合线下，独创全新的“O2O+S”的商业模式，布局大健康产业，旨在持续解决全中国的亚健康及疾病年轻化问题；</p>
-    <div class="img"><img src="./img/about_1.png" alt=""></div>
+    <div class="img"><img src="../assets/img/about_1.png" alt=""></div>
     <p>莱瘦是由合肥莱动运动科技有限公司通过研发设计开发的健康APP。在莱瘦我们不仅专注于减肥，更涵盖了增肌、营养饮食、改善亚健康等全方位健康知识。</p>
-    <div class="img"><img src="./img/about_2.png" alt=""></div>
+    <div class="img"><img src="../assets/img/about_2.png" alt=""></div>
     <h3>莱瘦为你提供：</h3>
     <ul>
       <li>

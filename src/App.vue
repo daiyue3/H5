@@ -32,6 +32,12 @@ export default {
 .container{
   background-color: #FFF;
 }
-
+p{
+	width: 100%;
+	display: block;
+}
+img{
+	width: 100%;
+}
 </style>
 

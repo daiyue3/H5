@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div style="background-color: #CB3B27;">
-        <img src="https://daiyue.site/img/ads.jpg" style="width: 100%;min-height: 400px;">
+    <div>
+        <img src="../assets/img/ads.jpg" style="width: 100%;min-height: 400px;">
         <div class="showForm" @click="clickme" id="clickme">点我减肥</div>
         <div v-show="showForm" id="form" style="color:#fff;">
             手机号码：<input type="text" placeholder="请输入手机号码" v-model="phonenum" id="phonenum">
@@ -107,17 +107,23 @@ export default {
   min-height:100vh;
   box-sizing: border-box;
   padding: 0;
-  background-color: #CB3B27;
+  background: -webkit-linear-gradient(left, #e74a03 , #c90103,#e74a03); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #e74a03, #c90103,#e74a03); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #e74a03, #c90103,#e74a03); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #e74a03 , #c90103,#e74a03); /* 标准的语法 */
   .showForm {
     font-size: 18px;
     width: 100%;
     height: 40px;
-    margin-top: 10px;
     padding-bottom: 10px;
     color: #fff;
     display: block;
     line-height: 40px;
     text-align: center;
+    background: -webkit-linear-gradient(left, #e74a03 , #c90103,#e74a03); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #e74a03, #c90103,#e74a03); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #e74a03, #c90103,#e74a03); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #e74a03 , #c90103,#e74a03); /* 标准的语法 */
   }
   #form{
     padding: 10px;
@@ -125,16 +131,20 @@ export default {
     margin: 0 auto;
     font-size: 18px;
     width: 80%;
+
     input{
       width: 100%;
       height: 40px;
       border-radius: 5px;
-      border: 1px solid #CB3B27;
+      border: 1px solid transparent;
       background-color: #FFF;
       font-size: 18px;
       padding: 0 10px;
       margin: 10px 0;
       color: #333;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
     }
   }
   .submit{

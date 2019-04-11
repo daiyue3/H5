@@ -1,9 +1,8 @@
 <template>
   <div class="container">
     <div class="register">
-      <img src="https://daiyue.site/img/ads.jpg" style="width: 100%;min-height: 400px;">
-      <div class="showForm" @click="clickme" id="clickme">点我减肥</div>
-      <div v-show="showForm" id="form">
+      <img src="../assets/img/ads.jpg" style="width: 100%;min-height: 400px;">
+      <div id="form">
         手机号码：<input type="text" placeholder="请输入手机号码" v-model="phonenum" id="phonenum">
         登录密码：<input type="password" placeholder="请输入密码" v-model="psw" id="psw">
         确认密码：<input type="password" placeholder="请再次输入密码" v-model="psw1" id="psw1">
@@ -13,10 +12,10 @@
         </div>
       </div>
       <div class="download-btn">
-        <img src="./img/logo.png" alt="">
+        <img src="../assets/img/logo.png" alt="" style="width: 40px;height: 40px;">
         <div class="desc">
-          <p class="one">要享瘦，找莱瘦！</p>
-          <p class="two">莱瘦，一款专业营养健康服务APP。已成功为100000+家庭提供营养健康管家服务，为200000+个人解决营养健康问题。1000+营养俱乐部，10000+营养顾问，24小时在线，持续服务，持续开展营养及减脂。应用包含附近的俱乐部、预约私人营养顾问等。</p>
+          <p class="one">让生意更好做，让生活更精彩!</p>
+          <p class="two">下载注册送价值198元大礼包</p>
         </div>
         <div class="btn" @click="download">
           免费下载
@@ -38,7 +37,6 @@
     name: "ads",
     data() {
       return {
-        showForm: false,
         phonenum: '',
         psw: '',
         psw1: '',
@@ -179,16 +177,13 @@
       download(){
         console.log('clicked');
         window.location.href = this.downloadUrl;
-      },
-      clickme(){
-        this.showForm = true
       }
     },
     mounted() {
       this.getParam();
     },
     created() {
-      document.title = "真挚邀请您注册我们的会员"
+      document.title = "真挚邀请您为我助力"
     }
   };
 </script>
@@ -200,26 +195,17 @@
     min-height:100vh;
     box-sizing: border-box;
     padding: 0;
-    background-color: #cc3b28;
-    background: -webkit-linear-gradient(left, #cc3b28 , #e6442d); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(right, #cc3b28, #e6442d); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(right, #cc3b28, #e6442d); /* Firefox 3.6 - 15 */
-    background: linear-gradient(to right, #cc3b28 , #e6442d); /* 标准的语法 */
-    .showForm {
-      font-size: 18px;
-      width: 100%;
-      height: 40px;
-      margin-top: 10px;
-      padding-bottom: 10px;
-      color: #fff;
-      display: block;
-      line-height: 40px;
-      text-align: center;
-    }
+/*    background: url("../assets/img/bg-color.png") repeat left top;
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;*/
+    background: -webkit-linear-gradient(left, #e74a03 , #c90103,#e74a03); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #e74a03, #c90103,#e74a03); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #e74a03, #c90103,#e74a03); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #e74a03 , #c90103,#e74a03); /* 标准的语法 */
     #form{
       padding: 10px 10px 60px 10px;
       box-sizing: border-box;
-      margin: 0 auto;
+      margin: -160px auto 0;
       font-size: 18px;
       width: 80%;
       color: #fff;
@@ -253,7 +239,7 @@
       color:#fff;
     }
     .download-btn {
-      display:box;
+      // display:box;
       display:-webkit-box;
       display:-webkit-flex;
       display:-moz-box;
@@ -294,6 +280,7 @@
           text-overflow: ellipsis;
           white-space: nowrap;
           line-height: 20px;
+					font-size: 14px;
           &.one {
             font-weight: bold;
           }

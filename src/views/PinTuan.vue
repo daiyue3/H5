@@ -297,6 +297,7 @@ export default {
     bottom: 0;
     background-color: #fff;
     z-index: 999;
+	text-align: center;
     .pintuan {
       height: 50px;
       width: 100%;

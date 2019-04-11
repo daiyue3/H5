@@ -95,8 +95,8 @@ export default {
       });
     },
     getParam() {
-       var _html = window.location.href;
-//      var _html = 'http://share.laiscn.com/activity?id=a5905843-acb5-43b3-bedc-a227521b77a1&random=201903311320373270'
+		//var _html = window.location.href;
+     var _html = 'http://share.laiscn.com/activity?id=bdecd1ee-aa0e-4499-b877-552b2ef8e26d&random=201904081032101037'
       var Request = new Object();
       if (_html.indexOf("?") != -1) {
         var str = _html.split("?")[1]; //去掉?号
@@ -225,17 +225,25 @@ export default {
     margin-top: 5px;
     background-color: #fff;
     box-sizing: border-box;
-    img{
-      width:100%!important;
-    }
+	text-align: center;
+	p{
+		width: 100vw;
+		box-sizing: border-box;
+		text-align: center;
+		img{
+		  width:100vw!important;
+		}
+	}
+    
   }
   .footer {
-    width: 100%;
+    width: 100vw;
     height: 50px;
     position: fixed;
     bottom: 0;
     background-color: #fff;
     z-index: 999;
+	text-align: center;
     .join {
       height: 50px;
       width: 100%;
@@ -247,5 +255,7 @@ export default {
       font-size: 18px;
     }
   }
+  
+  
 }
 </style>

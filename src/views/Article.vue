@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     getArticleDetails (){
-//       var html = "http://47.99.100.88:82/article?id=ba1fab42-f536-45d0-808e-c55ceda6dd3a"
+       //var html = "https://share.laiscn.com/article?id=ba1fab42-f536-45d0-808e-c55ceda6dd3a"
       var html = window.location.href
       var Request = new Object();
       if(html.indexOf("?")!=-1){

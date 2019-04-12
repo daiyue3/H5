@@ -118,7 +118,7 @@
                           window.location.href = that.siteAndroid; //打开安卓
                         }, 200);
                         setTimeout(function(){
-                          window.location.href="https://daiyue.site/download/laiscn.apk"; //如果超时就跳转到app下载页
+                          window.location.href="https://sj.qq.com/myapp/detail.htm?apkName=com.cherishTang.laishou"; //如果超时就跳转到app下载页
                         },2500);
                       }
                       if (isiOS) {
@@ -128,8 +128,8 @@
                           window.location.href = that.siteIos; //打开IOS
                         }, 200);
                         setTimeout(function(){
-                          Toast.fail('IOS暂不支持下载')
-                          // window.location.href=""; //如果超时就跳转到app下载页
+                          //Toast.fail('IOS暂不支持下载')
+                           window.location.href="https://itunes.apple.com/cn/app/1448462127/id1448462127?mt=8"; //如果超时就跳转到app下载页
                         },3000);
                       }
                     }

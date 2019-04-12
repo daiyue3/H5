@@ -169,7 +169,7 @@
             }, 200);
             setTimeout(function(){
               //Toast.fail('IOS暂不支持下载');
-              // window.location.href="https://itunes.apple.com/cn/app/1448462127/id1448462127?mt=8"; //如果超时就跳转到app下载页
+               window.location.href="https://itunes.apple.com/cn/app/1448462127/id1448462127?mt=8"; //如果超时就跳转到app下载页
             },2000);
           }
         }

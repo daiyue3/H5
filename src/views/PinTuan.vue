@@ -96,7 +96,7 @@ export default {
       }).then(() => {
         console.log(this.laishou)
         Toast.loading({
-          duration: 2500,
+          duration: 2000,
           mask: true,
           message: '正在打开中'
         });
@@ -166,8 +166,8 @@ export default {
             window.location.href = _href; //打开IOS
           }, 200);
           setTimeout(function(){
-            Toast.fail('IOS暂不支持下载')
-            // window.location.href="https://itunes.apple.com/cn/app/1448462127/id1448462127?mt=8"; //如果超时就跳转到app下载页
+            //Toast.fail('IOS暂不支持下载')
+             window.location.href="https://itunes.apple.com/cn/app/1448462127/id1448462127?mt=8"; //如果超时就跳转到app下载页
           },2000);
         }
       }

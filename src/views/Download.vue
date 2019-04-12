@@ -34,7 +34,7 @@
   import { Toast } from 'vant';
 
   export default {
-    name: "ads",
+    name: "download",
     data() {
       return {
         phonenum: '',

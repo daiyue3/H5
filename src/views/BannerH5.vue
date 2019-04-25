@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
 // @ is an alias to /src
 import { Toast } from 'vant';
 

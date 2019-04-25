@@ -31,7 +31,7 @@ f) 在莱瘦平台上创建的某一交易中，如交易任何一方履行或�
 	</div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
 export default {
   name: "secret",
   data() {

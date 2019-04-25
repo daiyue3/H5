@@ -67,7 +67,7 @@
   </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import { Dialog } from 'vant';

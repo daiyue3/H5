@@ -11,6 +11,7 @@ import Secret from './views/Secret.vue'
 import About from './views/About.vue'
 import Agreement from './views/Agreement.vue'
 import Download from './views/Download.vue'
+import MyPhotoes from './views/MyPhotoes.vue'
 
 Vue.use(Router)
 
@@ -73,7 +74,12 @@ export default new Router({
       path: '/download',
       name: 'download',
       component: Download
-    }
+    },
+		{
+		  path: '/myPhotoes',
+		  name: 'myPhotoes',
+		  component: MyPhotoes
+		}
     // {
     //   path: '/about',
     //   name: 'about',

@@ -87,8 +87,8 @@
 				})
 			},
 			getParam() {
-				// var _html = window.location.href;
-				var _html = 'http://share.laiscn.com/myPhotoes?userId=08C6F902-6548-4882-B845-75BE2B1E2491'
+				var _html = window.location.href;
+				// var _html = 'http://share.laiscn.com/myPhotoes?userId=08C6F902-6548-4882-B845-75BE2B1E2491'
 				var Request = new Object();
 				if (_html.indexOf("?") != -1) {
 					var str = _html.split("?")[1]; //去掉?号

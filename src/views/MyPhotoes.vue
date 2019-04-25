@@ -1,8 +1,27 @@
 <template>
-	<div class="container">
-		<div id="show" style="display: none;width:100%;height:100vh;background-color:#323334;z-index:9999;box-sizing:border-box;padding:0 10px;position:fixed;">
-			<img src="https://daiyue.site/img/showimg.png" style="width: 100%;">
-		</div>
+	<div class="container pengyouquan">
+		<van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" :error.sync="error" error-text="请求失败，点击重新加载">
+			<div class="item" v-for="(item, index) in items" :key="index">
+				<div class="photo-header">
+					<img :src="item.headImg" alt="头像" class="photo">
+					<div class="name">
+						{{item.name}}
+					</div>
+					<div class='time'>
+						{{item.strCreateTime}}
+					</div>
+				</div>
+				<div class='introduce'>
+					{{item.introduce}}
+				</div>
+				<div class="imgs">
+					<img v-for="(img, index) in item.photoList" :key="index" v-lazy="img" class="img1" v-if="item.photoList.length==1" @click="imgPreview(item.photoList,index)">
+					<img v-for="(img, index) in item.photoList" :key="index" v-lazy="img" class="img2" v-if="item.photoList.length==2" @click="imgPreview(item.photoList,index)">
+					<img v-for="(img, index) in item.photoList" :key="index" v-lazy="img" class="img3456789" v-if="item.photoList.length>=3" @click="imgPreview(item.photoList,index)">
+				</div>
+
+			</div>
+		</van-list>
 
 	</div>
 </template>
@@ -11,24 +30,65 @@
 	// @ is an alias to /src
 	// import HelloWorld from '@/components/HelloWorld.vue'
 	import {
+		List
+	} from 'vant';
+	import {
 		Dialog
 	} from "vant";
 	import {
 		Toast
 	} from "vant";
-
+	import {
+		ImagePreview
+	} from 'vant';
+	import {
+		Lazyload
+	} from 'vant';
 	export default {
 		name: "myPhotoes",
 		data() {
 			return {
+				//或者地址 赋值
+				request: {},
+				page: 1,
+				rows: 10,
+				total: '',
+				//获取的数据列表
+				items: [],
+				loading: false,
+				finished: false,
+				error: false
 
 			};
 		},
 		methods: {
-
+			onLoad() {
+				// 异步更新数据
+				var that = this
+				setTimeout(() => {
+					that.getParam()
+					// 数据全部加载完成
+					if (this.items.length == (this.total==0?6:this.total)) {
+						this.finished = true;
+					}
+				}, 500);
+			},
+			imgPreview(images, index) {
+				// console.log(index)
+				ImagePreview({
+					images: images,
+					showIndex: true,
+					loop: false,
+					showIndicators:true,
+					showIndex: true,
+					maxZoom: 10,
+					minZoom: 1/10,
+					startPosition: index
+				})
+			},
 			getParam() {
-				var _html = window.location.href;
-				//var _html = 'http://share.laiscn.com/activity?id=bdecd1ee-aa0e-4499-b877-552b2ef8e26d&random=201904081032101037'
+				// var _html = window.location.href;
+				var _html = 'http://share.laiscn.com/myPhotoes?userId=08C6F902-6548-4882-B845-75BE2B1E2491'
 				var Request = new Object();
 				if (_html.indexOf("?") != -1) {
 					var str = _html.split("?")[1]; //去掉?号
@@ -38,71 +98,37 @@
 					}
 				}
 				this.request = Request;
-				this.laishou =
-					"laishou://share.com/joinactivity?id=" +
-					Request.id +
-					"&random=" +
-					Request.random;
+				// console.log(this.request)
+				this.getData()
 			},
 			getData() {
-				//this.request.id
 				let param = {
-					id: this.request.id
+					"page": this.page,
+					"rows": this.rows,
+					"userId": this.request.userId
 				};
+				// console.log(param);return false;
 				this.$http
-					.post("/Activity/ActivityDetails", param)
+					.post("/Home/PhotoPage", param)
 					.then(res => {
 						let data = res.data.data;
-						this.activityTitle = data.activityTitle;
-						this.activityContent = data.activityContent;
-						this.strStartTime = data.strStartTime;
-						this.strEndTime = data.strEndTime;
-						this.banners = [data.img];
-						this.clubAddress = data.clubAddress;
-						this.price = data.price;
-						this.signList = data.signList;
-						this.clubName = data.clubName;
+						this.page = data.page
+						this.rows = data.rows
+						this.total = data.total
+						this.items = data.list
+						console.log(data)
+						// 加载状态结束
+						this.loading = false;
 					})
 					.catch(res => {
 						console.log(res);
 					});
 			},
-			isweixin(_href) {
-				var ua = navigator.userAgent.toLowerCase();
-				if (ua.match(/MicroMessenger/i) == "micromessenger") {
-					//document.getElementById("show").style.display="none";//隐藏
-					document.getElementById("show").style.display = "block"; //显示
-				} else {
-					var u = navigator.userAgent;
-					var isAndroid = u.indexOf("Android") > -1 || u.indexOf("Adr") > -1; //android终端
-					var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-					if (isAndroid) {
-						document.getElementById("show").style.display = "none"; //隐藏
-						setTimeout(function() {
-							window.location.href = _href; //打开安卓
-						}, 200);
-						setTimeout(function() {
-							window.location.href = "https://sj.qq.com/myapp/detail.htm?apkName=com.cherishTang.laishou"; //如果超时就跳转到app下载页
-						}, 2000);
-					}
-					if (isiOS) {
-						document.getElementById("show").style.display = "none"; //隐藏
-						setTimeout(function() {
-							window.location.href = _href; //打开IOS
-						}, 200);
-						setTimeout(function() {
-							//Toast.fail('IOS暂不支持下载')
-							window.location.href = "https://itunes.apple.com/cn/app/1448462127/id1448462127?mt=8"; //如果超时就跳转到app下载页
-						}, 2000);
-					}
-				}
-			},
-
 
 
 		},
 		mounted() {
-
+			
 		},
 		created() {
 			document.title = "我的相册";
@@ -113,15 +139,86 @@
 
 <style lang="scss" rel="stylesheet/scss" scoped>
 	.container {
-		width: 100%;
-		height: auto;
-		min-height: 100vh;
+		width: 100vw;
+		height: 100vh;
 		box-sizing: border-box;
-		padding: 0 0 50px 0;
-		background-color: #eeeeee;
+		padding: 10px 15px 10px 15px;
+		background-color: #fff;
+		overflow-y: scroll;
 
+		.item {
+			box-sizing: border-box;
+			padding: 0 0 10px 0;
+			width: 100%;
+			display: block;
 
+			.photo-header {
+				width: 100%;
+				height: 50px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 8px;
 
+				.photo {
+					width: 43px;
+					height: 43px;
+					border-radius: 50%;
+				}
+
+				.name {
+					margin-left: -39%;
+					color: #666;
+					font-size: 10px;
+				}
+
+				.time {
+					line-height: 50px;
+					color: #999;
+					font-size: 8px;
+				}
+			}
+
+			.introduce {
+				color: #333;
+				font-size: 14px;
+			}
+
+			.imgs {
+				box-sizing: border-box;
+				width: 100%;
+				padding: 5px 0;
+				float: left;
+				img:last-child{
+					margin-bottom: 30px;
+				}
+				img {
+					float: left;
+					object-fit:cover;
+					margin-bottom: 8px;
+				}
+
+				.img1 {
+					width: 60%;
+					height:180px;
+				}
+
+				.img2 {
+					width: 40%;
+					margin-right: 2%;
+					height:160px;
+				}
+
+				.img3456789 {
+					width: 31.3%;
+					margin-right: 2%;
+					height:120px;
+				}
+			}
+
+		}
+		
+		
 
 	}
 </style>

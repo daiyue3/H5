@@ -68,7 +68,7 @@
 				setTimeout(() => {
 					that.getParam()
 					// 数据全部加载完成
-					if (this.items.length == (this.total==0?6:this.total)) {
+					if (this.items.length == this.total) {
 						this.finished = true;
 					}
 				}, 500);
@@ -88,7 +88,7 @@
 			},
 			getParam() {
 				var _html = window.location.href;
-				// var _html = 'http://share.laiscn.com/myPhotoes?userId=08C6F902-6548-4882-B845-75BE2B1E2491'
+				// var _html = 'http://share.laiscn.com/myPhotoes?userId=8ea36134-9d6a-4177-b641-e2bc7ceab465'
 				var Request = new Object();
 				if (_html.indexOf("?") != -1) {
 					var str = _html.split("?")[1]; //去掉?号
@@ -114,7 +114,7 @@
 						let data = res.data.data;
 						this.page = data.page
 						this.rows = data.rows
-						this.total = data.total
+						this.total = data.records
 						this.items = data.list
 						console.log(data)
 						// 加载状态结束
